@@ -1,4 +1,4 @@
-name := """scala-play-react-seed"""
+name := """toat"""
 
 version := "1.0-SNAPSHOT"
 

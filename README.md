@@ -49,14 +49,14 @@ Read more @ http://bit.ly/2A1AzEq
 │     └── /controllers/                   # Backend controllers
 │           └── FrontendController.scala  # Asset controller wrapper serving frontend assets and artifacts
 ├── /conf/                                # Configurations files and other non-compiled resources (on classpath)
-│     ├── application.conf                # Play application configuratiion file.
+│     ├── application.conf                # Play application configuration file.
 │     ├── logback.xml                     # Logging configuration
 │     └── routes                          # Routes definition file
 ├── /logs/                                # Log directory
 │     └── application.log                 # Application log file
 ├── /project/                             # Contains project build configuration and plugins
 │     ├── FrontendCommands.scala          # Frontend build command mapping configuration
-│     ├── FrontendRunHook.scala           # Forntend build PlayRunHook (trigger frontend serve on sbt run)
+│     ├── FrontendRunHook.scala           # Frontend build PlayRunHook (trigger frontend serve on sbt run)
 │     ├── build.properties                # Marker for sbt project
 │     └── plugins.sbt                     # SBT plugins declaration
 ├── /public/                              # Frontend build artifacts will be copied to this directory
