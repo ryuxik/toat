@@ -40,17 +40,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--detail-color);
+  color: var(--accent-color);
   text-decoration: none;
   text-transform: uppercase;
   height: -webkit-fill-available;
   width: 33%;
+  padding: 0 2rem 0 2rem;
 }
 
 .active-section {
   border-bottom: 15px solid var(--detail-color-faint);
+  color: var(--detail-color);
 }
 
-.nav-section:hover {
-  color: var(--accent-color);
+.home-container {
+  height: 80vh;
+  width: 100vw;
+  background-color: var(--main-color);
+  padding: 2rem;
 }
