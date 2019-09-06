@@ -13,8 +13,4 @@ describe('App tests', () => {
     ReactDOM.render(<App/>, div);
     ReactDOM.unmountComponentAtNode(div);
   });
-
-  it('getSummary function should called exactly once', () => {
-    expect(Client.getSummary.mock.calls.length).toBe(1);
-  });
 });

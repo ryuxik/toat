@@ -5,61 +5,83 @@ import {
   Link
 } from 'react-router-dom';
 
-import reactLogo from './images/react.svg';
-import playLogo from './images/play.svg';
-import scalaLogo from './images/scala.svg';
-import Client from "./Client";
+import Home from './Home';
+import Entries from './Entries';
+import Friends from './Friends';
+import Profile from './Profile';
 
 import './App.css';
 
-const Tech = ({match}) => {
-  return <div>Current Route: {match.params.tech}</div>
-};
+const NAVSECTIONS = {
+  ENTRIES : 'entries',
+  PROFILE : 'profile',
+  FRIENDS : 'friends',
+  HOME : 'home'
+}
 
-
-class App extends Component {
+class AppRouter extends Component {
   constructor(props) {
     super(props);
-    this.state = {title: ''};
+    this.state = {
+      activeSection : NAVSECTIONS.HOME
+    };
   }
 
-  async componentDidMount() {
-    Client.getSummary(summary => {
-      this.setState({
-        title: summary.content
-      });
+  handleSectionClick(sectionType) {
+    this.setState({
+      activeSection: sectionType
     });
   }
 
   render() {
+    let entriesClasses = 'nav-section';
+    let profileClasses = 'nav-section';
+    let friendClasses = 'nav-section';
+    switch (this.state.activeSection) {
+      case NAVSECTIONS.ENTRIES:
+        entriesClasses += ' active-section';
+        break;
+      case NAVSECTIONS.FRIENDS:
+        friendClasses += ' active-section';
+        break;
+      case NAVSECTIONS.PROFILE:
+        profileClasses += ' active-section';
+        break;
+      default:
+        break;
+    }
     return (
       <Router>
-        <div className="App">
-          <h1>Welcome to {this.state.title}</h1>
-          <nav>
-            <Link to="scala">
-              <img width="400" height="400" src={scalaLogo} alt="Scala Logo"/>
-            </Link>
-            <Link to="play">
-              <img width="400" height="400" src={playLogo} alt="Play Framework Logo"/>
-            </Link>
-            <Link to="react">
-              <img width="400" height="400" src={reactLogo} alt="React Logo"/>
-            </Link>
+        <div>
+          <nav className="main-nav">
+            <Link
+              className="nav-title"
+              to="/"
+              onClick={() => this.handleSectionClick(NAVSECTIONS.HOME)}>Toat</Link>
+            <div className="nav-sections-container">
+              <Link
+                className={entriesClasses}
+                to="/entries"
+                onClick={() => this.handleSectionClick(NAVSECTIONS.ENTRIES)}>my entries</Link>
+              <Link
+                className={profileClasses}
+                to="/profile"
+                onClick={() => this.handleSectionClick(NAVSECTIONS.PROFILE)}>my profile</Link>
+              <Link
+                className={friendClasses}
+                to="/friends"
+                onClick={() => this.handleSectionClick(NAVSECTIONS.FRIENDS)}>my friends</Link>
+            </div>
           </nav>
-          <Route path="/:tech" component={Tech}/>
-          <div>
-            <h2>Check out the project on GitHub for more information</h2>
-            <h3>
-              <a target="_blank" rel="noopener noreferrer" href="https://github.com/yohangz/scala-play-react-seed">
-                scala-play-react-seed
-              </a>
-            </h3>
-          </div>
         </div>
+
+        <Route path="/" exact component={Home}/>
+        <Route path="/entries" exact component={Entries}/>
+        <Route path="/profile" exact component={Profile}/>
+        <Route path="/friends" exact component={Friends}/>
       </Router>
     );
   }
 }
 
-export default App;
+export default AppRouter;
