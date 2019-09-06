@@ -43,7 +43,6 @@
   color: var(--detail-color);
   text-decoration: none;
   text-transform: uppercase;
-  
   height: -webkit-fill-available;
   width: 33%;
 }
