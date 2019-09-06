@@ -5,10 +5,10 @@ import {
   Link
 } from 'react-router-dom';
 
-import Home from './Home';
-import Entries from './Entries';
-import Friends from './Friends';
-import Profile from './Profile';
+import Home from './Views/Home/Home';
+import Entries from './Views/Entries/Entries';
+import Friends from './Views/Friends/Friends';
+import Profile from './Views/Profile/Profile';
 
 import './App.css';
 
