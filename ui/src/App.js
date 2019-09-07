@@ -26,7 +26,7 @@ class AppRouter extends React.Component {
     })
   }
 
-  handleSectionClick(sectionType) {
+  handleSectionClick = (sectionType) => {
     this.setState({
       activeSection: sectionType
     });
@@ -38,7 +38,8 @@ class AppRouter extends React.Component {
         <Navbar 
           activeSection={this.state.activeSection}
           open={this.state.showNav}
-          onToggleNavbar={this.onToggleNavbar}/>
+          onToggleNavbar={this.onToggleNavbar}
+          onSectionClick={this.handleSectionClick}/>
         <Route path="/" exact component={Home}/>
         <Route path="/entries" exact component={Entries}/>
         <Route path="/profile" exact component={Profile}/>

@@ -32,32 +32,35 @@ const Navbar = props => {
   const render_nav = () => {
     return (
       <nav className="main-nav">
-        <Link id="nav-collapse" onClick={props.onToggleNavbar}>x</Link>
+        <div id="nav-collapse" onClick={props.onToggleNavbar}>x</div>
         <Link
           className="nav-title"
           to="/"
-          onClick={() => this.handleSectionClick(NAV_SECTIONS.HOME)}>Toat</Link>
+          onClick={() => props.onSectionClick(NAV_SECTIONS.HOME)}>Toat</Link>
         <div className="nav-sections-container">
           <Link
             className={entriesClasses}
             to="/entries"
-            onClick={() => this.handleSectionClick(NAV_SECTIONS.ENTRIES)}>my entries</Link>
+            onClick={() => props.onSectionClick(NAV_SECTIONS.ENTRIES)}>my entries</Link>
           <Link
             className={profileClasses}
             to="/profile"
-            onClick={() => this.handleSectionClick(NAV_SECTIONS.PROFILE)}>my profile</Link>
+            onClick={() => props.onSectionClick(NAV_SECTIONS.PROFILE)}>my profile</Link>
           <Link
             className={friendClasses}
             to="/friends"
-            onClick={() => this.handleSectionClick(NAV_SECTIONS.FRIENDS)}>my friends</Link>
+            onClick={() => props.onSectionClick(NAV_SECTIONS.FRIENDS)}>my friends</Link>
         </div>
       </nav>
       );
   }
 
   const render_hamburger = () => {
-    console.log("Hmaborgar");
-    return <div onClick={props.onToggleNavbar}>Hamboragrar</div>
+    return(
+      <div
+        onClick={props.onToggleNavbar}
+        className='hamburger'>&#9776;</div>
+    );
   }
 
   return (props.open ? render_nav() : render_hamburger());
