@@ -2,7 +2,7 @@ import React from 'react';
 
 const Entries = props => {
     return (
-        <div>This is the entries view</div>
+        <div className='entries-container'>This is the entries view</div>
     );
 }
 

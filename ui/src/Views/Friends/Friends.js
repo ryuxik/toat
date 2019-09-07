@@ -2,7 +2,7 @@ import React from 'react';
 
 const Friends = props => {
     return (
-        <div>This is the friends view</div>
+        <div className='friends-container'>This is the friends view</div>
     );
 }
 

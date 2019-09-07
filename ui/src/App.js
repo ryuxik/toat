@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -19,7 +19,7 @@ const NAVSECTIONS = {
   HOME : 'home'
 }
 
-class AppRouter extends Component {
+class AppRouter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

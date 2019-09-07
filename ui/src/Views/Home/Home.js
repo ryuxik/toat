@@ -1,4 +1,5 @@
 import React from 'react';
+import Editor from './Editor';
 
 const Home = props => {
     const renderWelcomeMessage = () => {
@@ -9,7 +10,10 @@ const Home = props => {
         );
     }
     return (
-        <div className="home-container">{renderWelcomeMessage()}</div>
+        <div className="home-container">
+            {renderWelcomeMessage()}
+            <Editor></Editor>
+        </div>
     );
 }
 

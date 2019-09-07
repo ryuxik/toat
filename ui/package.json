@@ -11,6 +11,12 @@
   "private": true,
   "dependencies": {
     "kleur": "^3.0.3",
+    "prosemirror-example-setup": "^1.0.1",
+    "prosemirror-model": "^1.7.2",
+    "prosemirror-schema-basic": "^1.0.1",
+    "prosemirror-schema-list": "^1.0.3",
+    "prosemirror-state": "^1.2.4",
+    "prosemirror-view": "^1.10.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
