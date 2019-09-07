@@ -66,9 +66,12 @@
 }
 
 .welcome-message {
+  display: flex;
   width: 85vh;
-  font-size: 2rem;
-  text-align: center;
+  font-size: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
 }
 
 .profile-container {
@@ -93,6 +96,11 @@
   padding: 2rem;
   border-radius: 2rem;
   height: 80vh;
+  color: var(--frame-color);
+}
+
+.ProseMirror > p {
+
 }
 
 .ProseMirror:focus {

@@ -11,7 +11,7 @@ import PMEditorView from './PMEditorView';
 
 const diaryEntrySchema = new Schema({
     nodes: addListNodes(schema.spec.nodes, "paragraph block*", "block"),
-    marks: schema.spec.marks
+    marks: schema.spec.marks,
 });
 
 
