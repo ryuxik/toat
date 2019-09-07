@@ -54,7 +54,9 @@ class PMEditorView extends React.Component {
     render() {
       // Render just an empty div which is then used as a container for an
       // EditorView instance.
-      return <div ref={this.createEditorView} />;
+      return (
+        <div ref={this.createEditorView} />
+      );
     }
 };
 

@@ -4,8 +4,8 @@ import Editor from './Editor';
 const Home = props => {
     const renderWelcomeMessage = () => {
         return ( 
-            <div>
-                Welcome to TOAT! TOAT is a picture diary adventure you can share with your friends.
+            <div className="welcome-message">
+                Write Today's Entry!
             </div>
         );
     }

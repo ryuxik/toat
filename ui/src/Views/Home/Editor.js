@@ -1,14 +1,15 @@
 import React from 'react';
 import {EditorState} from 'prosemirror-state';
-// import {EditorView} from 'prosemirror-view';
-import {Schema, DOMParser} from 'prosemirror-model';
+import {undo, redo, history} from 'prosemirror-history';
+import {keymap} from 'prosemirror-keymap';
+import {baseKeymap} from 'prosemirror-commands';
+import {Schema} from 'prosemirror-model';
 import {schema} from 'prosemirror-schema-basic';
 import {addListNodes} from 'prosemirror-schema-list';
-// import {exampleSetup} from 'prosemirror-example-setup';
 
 import PMEditorView from './PMEditorView';
 
-const mySchema = new Schema({
+const diaryEntrySchema = new Schema({
     nodes: addListNodes(schema.spec.nodes, "paragraph block*", "block"),
     marks: schema.spec.marks
 });
@@ -19,7 +20,12 @@ class Editor extends React.Component {
         super(props);
         this.state = {
             editorState: EditorState.create({
-                schema: mySchema
+                schema: diaryEntrySchema,
+                plugins: [
+                    history(),
+                    keymap({"Mod-z": undo, "Mod-y": redo}),
+                    keymap(baseKeymap)
+                ]
             })
         };
     }
@@ -37,13 +43,13 @@ class Editor extends React.Component {
         const {editorState} = this.state;
         return (
             <div>
-                <div class="menu">
+                <div className="menu">
                     {/* <UndoMenuButton
                     editorState={editorState}
                     dispatchTransaction={this.dispatchTransaction}
                     > */}
                 </div>
-                <div class="editorview-wrapper">
+                <div className="editorview-wrapper">
                     <PMEditorView
                         ref={this.onEditorView}
                         editorState={editorState}
@@ -58,10 +64,3 @@ class Editor extends React.Component {
 export default Editor;
 
 // https://discuss.prosemirror.net/t/using-with-react/904
-
-// window.view = new EditorView(document.querySelector("#editor"), {
-//   state: EditorState.create({
-//     doc: DOMParser.fromSchema(mySchema).parse(document.querySelector("#content")),
-//     plugins: exampleSetup({schema: mySchema})
-//   })
-// })
