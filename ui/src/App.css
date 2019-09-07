@@ -62,7 +62,7 @@
 .home-container {
   width: 85vw;
   background-color: var(--main-color);
-  padding: 2rem;
+  padding: 0 2rem 0 2rem;
 }
 
 .welcome-message {
@@ -74,13 +74,13 @@
 .profile-container {
   width: 85vw;
   background-color: var(--main-color);
-  padding: 2rem;
+  padding: 0 2rem 0 2rem;
 }
 
 .entries-container {
   width: 85vw;
   background-color: var(--main-color);
-  padding: 2rem;
+  padding: 0 2rem 0 2rem;
 }
 
 .editorview-wrapper {
@@ -104,5 +104,5 @@
 .friends-container {
   width: 85vw;
   background-color: var(--main-color);
-  padding: 2rem;
+  padding: 0 2rem 0 2rem;
 }
