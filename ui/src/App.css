@@ -54,6 +54,10 @@
   height: 33%;
 }
 
+.hamburger {
+  
+}
+
 .active-section {
   border-right: 15px solid var(--detail-color-faint);
   color: var(--detail-color);
@@ -97,10 +101,6 @@
   border-radius: 2rem;
   height: 80vh;
   color: var(--frame-color);
-}
-
-.ProseMirror > p {
-
 }
 
 .ProseMirror:focus {

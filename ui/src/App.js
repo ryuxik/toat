@@ -17,6 +17,7 @@ class AppRouter extends React.Component {
     this.state = {
       activeSection : NAV_SECTIONS.HOME,
       showNav : false,
+      userID: 'dummyData'
     };
   }
 
@@ -40,10 +41,18 @@ class AppRouter extends React.Component {
           open={this.state.showNav}
           onToggleNavbar={this.onToggleNavbar}
           onSectionClick={this.handleSectionClick}/>
-        <Route path="/" exact component={Home}/>
-        <Route path="/entries" exact component={Entries}/>
-        <Route path="/profile" exact component={Profile}/>
-        <Route path="/friends" exact component={Friends}/>
+        <Route
+          exact path="/"
+          render={() => <Home userID={this.state.userID}/>}/>
+        <Route 
+          exact path="/entries"
+          component={Entries}/>
+        <Route
+          exact path="/profile"
+          component={Profile}/>
+        <Route
+          exact path="/friends"
+          component={Friends}/>
       </Router>
     );
   }

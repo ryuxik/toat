@@ -2,64 +2,49 @@ import React from 'react';
 import { EditorView } from 'prosemirror-view';
 
 class PMEditorView extends React.Component {
-    editorView;
+    componentDidMount() {
+      this.editorView = this.createEditorView(this.el);
+      this.handleChange = this.handleChange.bind(this);
+    }
 
     createEditorView = (element) => {
-      if (element != null) {
-        this.editorView = new EditorView(element, {
+        return new EditorView(element, {
           state: this.props.editorState,
           dispatchTransaction: this.dispatchTransaction,
         });
-      }
     };
   
-    dispatchTransaction = (tx) => {
-      // In case EditorView makes any modification to a state we funnel those
-      // modifications up to the parent and apply to the EditorView itself.
-      const editorState = this.props.editorState.apply(tx);
-      if (this.editorView != null) {
-        this.editorView.updateState(editorState);
-      }
-      this.props.onEditorState(editorState);
+    dispatchTransaction = (transaction) => {
+      const editorState = this.props.editorState.apply(transaction);
+      this.editorView.updateState(editorState);
+      this.handleChange(editorState);
     };
   
     focus() {
-      if (this.editorView) {
-        this.editorView.focus();
-      }
-    }
-  
-    componentWillReceiveProps(nextProps) {
-      // In case we receive new EditorState through props — we apply it to the
-      // EditorView instance.
-      if (this.editorView) {
-        if (nextProps.editorState !== this.props.editorState) {
-          this.editorView.updateState(nextProps.editorState);
-        }
-      }
+      this.editorView.focus();
     }
   
     componentWillUnmount() {
-      if (this.editorView) {
-        this.editorView.destroy();
-      }
+      this.editorView.destroy();
     }
-  
+
+    handleChange(editorState) {
+      this.props.onEditorStateChange(editorState);
+    }
+    // TODO: find a better way to do this?
     shouldComponentUpdate() {
-      // Note that EditorView manages its DOM itself so we'd rather not mess
-      // with it.
       return false;
     }
   
     render() {
-      // Render just an empty div which is then used as a container for an
-      // EditorView instance.
       return (
-        <div ref={this.createEditorView} />
+        <div className="diary-entry" ref={el => this.el = el} />
       );
     }
 };
 
 export default PMEditorView;
+
+// https://reactjs.org/docs/integrating-with-other-libraries.html
 
   // https://discuss.prosemirror.net/t/using-with-react/904

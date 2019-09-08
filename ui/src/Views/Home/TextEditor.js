@@ -8,14 +8,14 @@ import {schema} from 'prosemirror-schema-basic';
 import {addListNodes} from 'prosemirror-schema-list';
 
 import PMEditorView from './PMEditorView';
+import UndoMenuButton from './UndoMenuButton';
 
 const diaryEntrySchema = new Schema({
     nodes: addListNodes(schema.spec.nodes, "paragraph block*", "block"),
     marks: schema.spec.marks,
 });
 
-
-class Editor extends React.Component {
+class TextEditor extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -30,30 +30,31 @@ class Editor extends React.Component {
         };
     }
 
-    dispatchTransaction = (tx) => {
-        const editorState = this.state.editorState.apply(tx);
-        this.setState({editorState});
+    dispatchTransaction = (transaction) => {
+        this.setState((state) => {
+            return { editorState: state.editorState.apply(transaction) };
+        });
     };
 
-    onEditorState = (editorState) => {
+    onEditorStateChange = (editorState) => {
         this.setState({editorState});
     };
 
     render() {
-        const {editorState} = this.state;
         return (
             <div>
                 <div className="menu">
-                    {/* <UndoMenuButton
-                    editorState={editorState}
-                    dispatchTransaction={this.dispatchTransaction}
-                    > */}
+                    <UndoMenuButton
+                        editorState={this.state.editorState}
+                        dispatchTransaction={this.dispatchTransaction}
+                        command={undo}
+                        isActive={true}/>
                 </div>
                 <div className="editorview-wrapper">
                     <PMEditorView
-                        ref={this.onEditorView}
-                        editorState={editorState}
-                        onEditorState={this.onEditorState}/>
+                        key={this.props.userID}
+                        editorState={this.state.editorState}
+                        onEditorStateChange={this.onEditorStateChange}/>
                 </div>
             </div>
         );
@@ -61,6 +62,6 @@ class Editor extends React.Component {
     
 }
 
-export default Editor;
+export default TextEditor;
 
 // https://discuss.prosemirror.net/t/using-with-react/904

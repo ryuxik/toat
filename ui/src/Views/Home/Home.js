@@ -1,5 +1,5 @@
 import React from 'react';
-import Editor from './Editor';
+import TextEditor from './TextEditor';
 
 const Home = props => {
     const renderWelcomeMessage = () => {
@@ -12,7 +12,8 @@ const Home = props => {
     return (
         <div className="home-container">
             {renderWelcomeMessage()}
-            <Editor></Editor>
+            <TextEditor
+                userID={props.userID}/>
         </div>
     );
 }
