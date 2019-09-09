@@ -1,13 +1,13 @@
 import React from 'react';
 import GenericMenuButton from './GenericMenuButton';
 
-const UndoMenuButton = props => {
+const RedoMenuButton = props => {
   return (
     <GenericMenuButton 
       command={props.command}
       editorState={props.editorState}
-      dispatchTransaction={props.dispatchTransaction}>&#8630;</GenericMenuButton>
+      dispatchTransaction={props.dispatchTransaction}>&#8631;</GenericMenuButton>
   );
 }
 
-export default UndoMenuButton;
+export default RedoMenuButton;

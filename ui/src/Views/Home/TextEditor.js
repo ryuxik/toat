@@ -9,6 +9,7 @@ import {addListNodes} from 'prosemirror-schema-list';
 
 import PMEditorView from './PMEditorView';
 import UndoMenuButton from './UndoMenuButton';
+import RedoMenuButton from './RedoMenuButton';
 
 const diaryEntrySchema = new Schema({
     nodes: addListNodes(schema.spec.nodes, "paragraph block*", "block"),
@@ -42,13 +43,16 @@ class TextEditor extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className ="editor-container">
                 <div className="menu">
                     <UndoMenuButton
                         editorState={this.state.editorState}
                         dispatchTransaction={this.dispatchTransaction}
-                        command={undo}
-                        isActive={true}/>
+                        command={undo}/>
+                    <RedoMenuButton
+                        editorState={this.state.editorState}
+                        dispatchTransaction={this.dispatchTransaction}
+                        command={redo}/>
                 </div>
                 <div className="editorview-wrapper">
                     <PMEditorView

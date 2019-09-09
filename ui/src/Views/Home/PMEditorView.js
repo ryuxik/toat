@@ -33,6 +33,7 @@ class PMEditorView extends React.Component {
     }
     // TODO: find a better way to do this?
     shouldComponentUpdate() {
+      console.log(this.props);
       return false;
     }
   

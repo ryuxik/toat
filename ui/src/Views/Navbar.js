@@ -32,7 +32,9 @@ const Navbar = props => {
   const render_nav = () => {
     return (
       <nav className="main-nav">
-        <div id="nav-collapse" onClick={props.onToggleNavbar}>x</div>
+        <div 
+          id="nav-collapse"
+          onClick={props.onToggleNavbar}>-</div>
         <Link
           className="nav-title"
           to="/"
@@ -55,15 +57,15 @@ const Navbar = props => {
       );
   }
 
-  const render_hamburger = () => {
+  const render_expand = () => {
     return(
       <div
         onClick={props.onToggleNavbar}
-        className='hamburger'>&#9776;</div>
+        className='nav-expand'>+</div>
     );
   }
 
-  return (props.open ? render_nav() : render_hamburger());
+  return (props.open ? render_nav() : render_expand());
 }
 
 export {

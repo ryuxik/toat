@@ -3,12 +3,14 @@
   --main-color: #FDF8F3;
   --secondary-color: #564787;
   --accent-color: #DBCBD8;
+  --secondary-accent-color: #ffe66b;
   --detail-color: #F2FDFF;
   --detail-color-faint: rgba(242, 253,255, 0.3);
 }
 
 #root {
   display: flex;
+  background-color: var(--main-color);
 }
 
 .main-nav {
@@ -54,8 +56,33 @@
   height: 33%;
 }
 
-.hamburger {
-  
+#nav-collapse {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  width: -webkit-fill-available;
+  font-size: 3rem;
+}
+
+#nav-collapse:hover {
+  cursor: pointer;
+  filter: contrast(140%);
+}
+
+.nav-expand {
+  font-size: 2rem;
+  color: var(--frame-color);
+  margin-left: 1rem;
+  margin-top: 2rem;
+  width: min-content;
+  height: min-content;
+  transition: filter 0.2s;
+}
+
+.nav-expand:hover {
+  filter: drop-shadow(8px 0 2px var(--secondary-accent-color));
+  cursor: pointer;
 }
 
 .active-section {
@@ -65,17 +92,44 @@
 
 .home-container {
   width: 85vw;
+  height: 100vh;
   background-color: var(--main-color);
   padding: 0 2rem 0 2rem;
 }
 
+.editor-container {
+}
+
+.menu {
+  display: flex;
+  height: 4vh;
+  justify-content: flex-start;
+  padding: 1rem;
+  background-color: var(--frame-color);
+  border-radius: 14px 14px 0 0;
+}
+
+.menu-button {
+  margin-right: 1rem;
+  font-size: 1.5rem;
+  background-color: var(--secondary-color);
+  color: var(--detail-color);
+  border-radius: 2px;
+  border-color: var(--detail-color);
+}
+
+.menu-button:hover {
+  cursor: pointer;
+  filter: contrast(140%);
+}
+
 .welcome-message {
   display: flex;
-  width: 85vh;
+  height: 10vh;
   font-size: 1.5rem;
+  font-weight: bold;
   justify-content: center;
   align-items: center;
-  padding-top: 1rem;
 }
 
 .profile-container {
@@ -91,15 +145,13 @@
 }
 
 .editorview-wrapper {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
 }
 
 .ProseMirror {
   background-color: var(--accent-color);
   padding: 2rem;
-  border-radius: 2rem;
-  height: 80vh;
+  border-radius: 0 0 2rem 2rem;
+  height: 70vh;
   color: var(--frame-color);
 }
 

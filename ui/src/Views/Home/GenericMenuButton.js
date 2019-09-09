@@ -7,12 +7,16 @@ const GenericMenuButton = props => {
         props.command(props.editorState, props.dispatchTransaction);
     }
 
-    // const disabled = props.isAllowed && !props.isAllowed(props.editorState);
+    const disabled = props.isAllowed && !props.isAllowed(props.editorState);
 
-    // const active = props.isActive && props.isActive(props.editorState);
+    const active = props.isActive && props.isActive(props.editorState);
     
     return (
-        <button onMouseDown={onMouseDown}>
+        <button
+            disabled={disabled}
+            active={active}
+            onMouseDown={onMouseDown}
+            className='menu-button'>
             {props.children}
         </button>
     );
